@@ -1,0 +1,141 @@
+.app-header {
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.app-header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.app-header-left {
+    flex: 0 0 auto;
+}
+
+.app-logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+.app-header-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 0 24px;
+}
+
+.search-container {
+    width: 100%;
+    max-width: 500px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 24px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: #a3e7f3;
+    box-shadow: 0 0 0 3px rgba(163, 231, 243, 0.1);
+}
+
+.app-header-right {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sos-button {
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(255, 68, 68, 0.3);
+}
+
+.sos-button:hover {
+    background: #ff2222;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(255, 68, 68, 0.4);
+}
+
+.icon-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.icon-button:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.notification-icon,
+.avatar-icon {
+    font-size: 24px;
+    display: block;
+}
+
+.notification-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: #ff4444;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 2px 6px;
+    min-width: 18px;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .app-header-content {
+        padding: 10px 16px;
+    }
+
+    .app-header-center {
+        padding: 0 12px;
+    }
+
+    .search-input {
+        font-size: 13px;
+        padding: 8px 16px;
+    }
+
+    .sos-button {
+        width: 40px;
+        height: 40px;
+        font-size: 10px;
+    }
+
+    .notification-icon,
+    .avatar-icon {
+        font-size: 20px;
+    }
+}

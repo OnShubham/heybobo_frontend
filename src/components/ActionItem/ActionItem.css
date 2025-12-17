@@ -1,0 +1,73 @@
+.action-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid #e2e8f0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.action-item:last-child {
+    border-bottom: none;
+}
+
+.action-item:hover {
+    background: rgba(0, 0, 0, 0.02);
+    margin: 0 -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.action-label {
+    font-size: 14px;
+    color: #2d3748;
+    font-weight: 400;
+}
+
+.action-arrow {
+    font-size: 20px;
+    color: #cbd5e0;
+    font-weight: 300;
+}
+
+/* Variant: Danger (for Delete Account, Log Out, etc.) */
+.action-item.danger .action-label {
+    color: #e53e3e;
+    font-weight: 500;
+}
+
+.action-item.danger:hover {
+    background: rgba(229, 62, 62, 0.05);
+}
+
+/* Variant: Primary (for highlighted actions) */
+.action-item.primary .action-label {
+    color: #3182ce;
+    font-weight: 500;
+}
+
+.action-item.primary:hover {
+    background: rgba(49, 130, 206, 0.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .action-item {
+        padding: 12px 0;
+    }
+
+    .action-item:hover {
+        margin: 0 -16px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .action-label {
+        font-size: 13px;
+    }
+
+    .action-arrow {
+        font-size: 18px;
+    }
+}

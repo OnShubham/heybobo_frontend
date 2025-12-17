@@ -1,70 +1,359 @@
-# Getting Started with Create React App
+# HeyBobo Frontend - Account/Profile Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A pixel-perfect, component-based React UI for an Account/Profile Dashboard with modern design aesthetics.
 
-## Available Scripts
+## 🎯 Project Overview
 
-In the project directory, you can run:
+This project implements a responsive, modular Account/Profile Dashboard UI built with React.js. The design follows a strict component-based architecture with reusable, well-documented components.
 
-### `npm start`
+### Key Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+✅ **Pixel-Perfect Design** - Matches reference design exactly  
+✅ **Component-Based Architecture** - 8 reusable components  
+✅ **Fully Responsive** - Mobile, tablet, and desktop support  
+✅ **Modern Aesthetics** - Gradients, shadows, smooth animations  
+✅ **Clean Code** - Separated concerns, no hardcoded data  
+✅ **Easy to Theme** - Centralized styling approach  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🚀 Quick Start
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `npm run build`
+- Node.js (v14 or higher)
+- npm or yarn
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+# Navigate to project directory
+cd heybobo_frontend
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Install dependencies
+npm install
 
-### `npm run eject`
+# Start development server
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The app will open at [http://localhost:3000](http://localhost:3000)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📁 Project Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+heybobo_frontend/
+├── public/
+│   └── assets/
+│       └── images/          # Place your images here
+│           ├── logo.png
+│           ├── top-background.png
+│           └── profile.png
+├── src/
+│   ├── components/
+│   │   ├── AppHeader/
+│   │   ├── ProfileHeader/
+│   │   ├── StatsCards/
+│   │   ├── AccordionSection/
+│   │   ├── PersonalInfoItem/
+│   │   ├── FeatureListItem/
+│   │   ├── ToggleItem/
+│   │   └── ActionItem/
+│   ├── App.js              # Main application
+│   ├── App.css             # Global styles
+│   └── index.js            # Entry point
+├── COMPONENT_TREE.md       # Component documentation
+└── README.md               # This file
+```
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🧩 Components
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 1. **AppHeader**
+Top navigation bar with logo, search, SOS button, notifications, and user avatar.
 
-### Code Splitting
+**Props:**
+- `logo`: App logo path
+- `onSearch`: Search callback
+- `notificationsCount`: Notification count
+- `onSOSClick`, `onNotificationClick`, `onProfileClick`: Action callbacks
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+### 2. **ProfileHeader**
+User profile section with background image, profile picture, level badge, and XP progress bar.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Props:**
+- `backgroundImage`: Background image path
+- `profileImage`: Profile picture path
+- `userName`: User's name
+- `level`: Current level
+- `currentXP`, `totalXP`: Experience points
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 3. **StatsCards**
+Grid of stat cards displaying key metrics (streak, XP, rank).
 
-### Advanced Configuration
+**Props:**
+- `stats`: Array of `{ icon, value, label }` objects
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+### 4. **AccordionSection** ⭐ (Highly Reusable)
+Expandable/collapsible section container used throughout the app.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+**Props:**
+- `title`: Section title
+- `children`: Content to display
+- `defaultExpanded`: Initial state
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 5. **PersonalInfoItem**
+Label-value pair display for personal information.
+
+**Props:**
+- `label`: Field label
+- `value`: Field value
+
+---
+
+### 6. **FeatureListItem**
+Simple clickable list item for features.
+
+**Props:**
+- `label`: Feature name
+- `onClick`: Click handler
+
+---
+
+### 7. **ToggleItem**
+Toggle switch with label for settings.
+
+**Props:**
+- `label`: Toggle label
+- `isEnabled`: Current state
+- `onToggle`: Toggle callback
+
+---
+
+### 8. **ActionItem**
+Clickable action row with arrow and variant support.
+
+**Props:**
+- `label`: Action label
+- `onClick`: Click handler
+- `variant`: 'default' | 'danger' | 'primary'
+
+---
+
+## 🎨 Design System
+
+### Colors
+
+```css
+/* Background Gradient */
+background: linear-gradient(180deg, #E3FADD 0%, #A3E7F3 100%);
+
+/* Text Colors */
+Primary: #2d3748
+Secondary: #718096
+
+/* Accent Colors */
+Green: #48bb78
+Red: #ff4444
+Blue: #3182ce
+```
+
+### Typography
+
+- **Font Family:** System fonts (-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto')
+- **Font Weights:** 400 (regular), 500 (medium), 600 (semibold), 700 (bold)
+
+### Spacing
+
+- **Border Radius:** 8px (small), 12px (medium), 50% (circular)
+- **Shadows:** Subtle with 0.08-0.12 opacity
+- **Padding:** 24px (desktop), 16px (mobile)
+
+---
+
+## 📱 Responsive Design
+
+### Breakpoints
+
+- **Mobile:** < 768px
+- **Tablet:** 769px - 1024px
+- **Desktop:** > 1024px
+
+### Responsive Behavior
+
+- Stats cards: 3 columns → 1 column on mobile
+- Reduced padding and font sizes on mobile
+- Touch-friendly tap targets
+- Optimized layouts for all screen sizes
+
+---
+
+## 🖼️ Adding Your Assets
+
+### Required Images
+
+1. **App Logo** (`public/assets/images/logo.png`)
+   - Recommended size: 120x40px
+   - Format: PNG with transparency
+
+2. **Top Background** (`public/assets/images/top-background.png`)
+   - Recommended size: 1200x300px
+   - Format: PNG or JPG
+
+3. **Profile Picture** (`public/assets/images/profile.png`)
+   - Recommended size: 240x240px
+   - Format: PNG or JPG (circular crop)
+
+### How to Add
+
+```bash
+# Create assets directory if it doesn't exist
+mkdir -p public/assets/images
+
+# Copy your images
+cp /path/to/your/logo.png public/assets/images/
+cp /path/to/your/background.png public/assets/images/top-background.png
+cp /path/to/your/profile.png public/assets/images/profile.png
+```
+
+---
+
+## 🔧 Customization
+
+### Changing Data
+
+Edit `src/App.js` to update:
+- Personal information
+- Stats values
+- Feature list
+- Action items
+
+```jsx
+const personalInfo = [
+  { label: 'Name', value: 'Your Name' },
+  { label: 'DOB', value: '01/01/1990' },
+  // ... more fields
+];
+```
+
+### Changing Colors
+
+Update CSS variables in component CSS files:
+
+```css
+/* Example: Change accent color */
+.xp-bar-fill {
+  background: linear-gradient(90deg, #yourColor 0%, #yourColor2 100%);
+}
+```
+
+### Adding New Sections
+
+```jsx
+<AccordionSection title="New Section" defaultExpanded={false}>
+  <ActionItem label="New Action" onClick={handleClick} />
+</AccordionSection>
+```
+
+---
+
+## 🧪 Testing
+
+```bash
+# Run tests
+npm test
+
+# Build for production
+npm run build
+```
+
+---
+
+## 📦 Building for Production
+
+```bash
+# Create optimized production build
+npm run build
+
+# The build folder will contain optimized files
+# Deploy the contents of the build folder to your server
+```
+
+---
+
+## 🎯 Design Principles
+
+1. **No Design Improvisation** - Follows reference design strictly
+2. **Component Reusability** - Every component is reusable with props
+3. **Clean Code** - Separated concerns, no hardcoded values
+4. **Responsive First** - Works on all devices
+5. **Performance** - Optimized rendering and animations
+
+---
+
+## 📚 Documentation
+
+- **[COMPONENT_TREE.md](./COMPONENT_TREE.md)** - Detailed component architecture
+- **Inline Comments** - Code is well-documented
+- **PropTypes** - Can be added for type checking
+
+---
+
+## 🛠️ Tech Stack
+
+- **React** 18.x
+- **CSS3** (Vanilla CSS, no frameworks)
+- **JavaScript** ES6+
+
+---
+
+## 🤝 Contributing
+
+1. Follow the existing component structure
+2. Maintain consistent naming conventions
+3. Add comments for complex logic
+4. Test on multiple screen sizes
+5. Keep components pure and reusable
+
+---
+
+## 📄 License
+
+This project is private and proprietary.
+
+---
+
+## 🐛 Troubleshooting
+
+### Images not showing?
+
+Make sure images are in `public/assets/images/` and paths in `App.js` are correct.
+
+### Styles not applying?
+
+Check that CSS files are imported in component files.
+
+### Component not rendering?
+
+Verify props are passed correctly and component is imported in `App.js`.
+
+---
+
+## 📞 Support
+
+For questions or issues, please contact the development team.
+
+---
+
+**Built with ❤️ by the HeyBobo Team**

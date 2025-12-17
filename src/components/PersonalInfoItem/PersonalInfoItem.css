@@ -1,0 +1,36 @@
+.personal-info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.personal-info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-size: 14px;
+    color: #718096;
+    font-weight: 400;
+}
+
+.info-value {
+    font-size: 14px;
+    color: #2d3748;
+    font-weight: 600;
+    text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .personal-info-item {
+        padding: 12px 0;
+    }
+
+    .info-label,
+    .info-value {
+        font-size: 13px;
+    }
+}
