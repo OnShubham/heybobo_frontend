@@ -6,12 +6,12 @@ import ProgressBar from '../ProgressBar/ProgressBar';
 const StatsCards = ({ stats, currentXP, totalXP, onStreakClick, onXPClick, onRookieClick }) => {
     const handleCardClick = (stat, index) => {
         // Determine which card was clicked based on label or index
-        if (stat.label === 'Streak' || stat.icon === '🔥') {
+        if (stat.label === 'Streak' || stat.icon.includes('streks.png')) {
             onStreakClick && onStreakClick();
-        } else if (stat.label === 'XP' || stat.icon === '💎') {
+        } else if (stat.label === 'XP' || stat.icon.includes('xp.png')) {
             onXPClick && onXPClick();
-        } else if (stat.label === '' && stat.value === 'Rookie') {
-            // Rookie card (no label, value is "Rookie")
+        } else if (stat.label === '' && stat.icon.includes('Badge_')) {
+            // Badge card (any badge level)
             onRookieClick && onRookieClick();
         }
     };
@@ -31,9 +31,12 @@ const StatsCards = ({ stats, currentXP, totalXP, onStreakClick, onXPClick, onRoo
                     className="stat-card"
                     onClick={() => handleCardClick(stat, index)}
                 >
-                    <div className="stat-icon">{stat.icon}</div>
-                    <div className="stat-value">{stat.value}</div>
-                    <div className="stat-label">{stat.label}</div>
+                    <div className="stat-icon">
+                        <img src={stat.icon} alt={stat.label || stat.value} />
+                    </div>
+                    <div className="stat-text">
+                        {stat.value} {stat.label}
+                    </div>
                 </div>
             ))}
         </div>
