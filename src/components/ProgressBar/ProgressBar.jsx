@@ -9,11 +9,14 @@ const ProgressBar = ({ current, total, label, className = '' }) => {
             <div className="progress-text">
                 <span className="current-xp">{current}</span> / {total} XP
             </div>
-            <div className="progress-bar-wrapper">
-                <div
-                    className="progress-bar-fill"
-                    style={{ width: `${percentage}%` }}
-                />
+            <div className="progress-bar-with-icon">
+                <img src="/assets/images/Levels.png" alt="Level" className="level-icon" />
+                <div className="progress-bar-wrapper">
+                    <div
+                        className="progress-bar-fill"
+                        style={{ width: `${percentage}%` }}
+                    />
+                </div>
             </div>
         </div>
     );

@@ -7,6 +7,22 @@
     align-items: center;
 }
 
+.progress-bar-with-icon {
+    display: flex;
+    align-items: center;
+    /* gap: 12px; */
+}
+
+.level-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    margin-right: -25px;
+    position: relative;
+    z-index: 10;
+    /* margin-bottom: -10px; */
+}
+
 .progress-bar-wrapper {
     width: 700px;
     height: 12px;
