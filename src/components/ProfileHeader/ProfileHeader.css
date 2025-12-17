@@ -1,11 +1,14 @@
 .profile-header {
-    background: linear-gradient(180deg, #E3FADD 0%, #A3E7F3 100%),
-        linear-gradient(0deg, rgba(187, 187, 187, 0.1), rgba(187, 187, 187, 0.1));
+    /* background: linear-gradient(180deg, #E3FADD 0%, #A3E7F3 100%),
+        linear-gradient(0deg, rgba(187, 187, 187, 0.1), rgba(187, 187, 187, 0.1)); */
+
+    background-image: url("../../../public/assets/images/top-background.png");
     background-size: cover;
     background-position: center;
-    padding: 40px 24px;
+    padding: 10px 24px;
     text-align: center;
     position: relative;
+    /* border-radius: 0 0 20% 20%; */
 }
 
 .profile-header-content {

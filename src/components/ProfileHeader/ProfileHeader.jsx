@@ -11,7 +11,7 @@ const ProfileHeader = ({
 }) => {
     const xpPercentage = (currentXP / totalXP) * 100;
 
-    return (
+    return (<>
         <div
             className="profile-header"
             style={{
@@ -42,6 +42,7 @@ const ProfileHeader = ({
                 </div>
             </div>
         </div>
+    </>
     );
 };
 

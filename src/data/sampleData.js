@@ -7,7 +7,7 @@
 export const userData = {
     // User Profile
     profile: {
-        userName: 'John Doe',
+        userName: 'Lorem Ipsum',
         level: 5,
         currentXP: 1680,
         totalXP: 2000,
@@ -77,7 +77,7 @@ export const userData = {
 // Asset Paths
 export const assetPaths = {
     logo: '/assets/images/logo.png',
-    topBackground: '/assets/images/top-background.png',
+    // topBackground: '/assets/images/top-background.png',
     profileImage: '/assets/images/profile.png',
 };
 
