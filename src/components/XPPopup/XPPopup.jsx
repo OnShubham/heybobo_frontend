@@ -17,7 +17,7 @@ const XPPopup = ({ isOpen, onClose, currentXP, totalXP }) => {
                     <h2>Your XP Progress</h2>
                 </div>
 
-                <div className="xp-stats">
+                {/* <div className="xp-stats">
                     <div className="xp-stat-item">
                         <div className="xp-stat-label">Current XP</div>
                         <div className="xp-stat-value">{currentXP}</div>
@@ -27,9 +27,9 @@ const XPPopup = ({ isOpen, onClose, currentXP, totalXP }) => {
                         <div className="xp-stat-label">Total XP</div>
                         <div className="xp-stat-value">{totalXP}</div>
                     </div>
-                </div>
+                </div> */}
 
-                <div className="xp-progress-container">
+                {/* <div className="xp-progress-container">
                     <div className="xp-progress-bar">
                         <div
                             className="xp-progress-fill"
@@ -38,15 +38,15 @@ const XPPopup = ({ isOpen, onClose, currentXP, totalXP }) => {
                             <span className="xp-progress-text">{xpPercentage.toFixed(1)}%</span>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
-                <div className="xp-info">
+                {/* <div className="xp-info">
                     <p className="xp-needed">
                         <strong>{xpNeeded} XP</strong> needed to reach next level
                     </p>
-                </div>
+                </div> */}
 
-                <div className="xp-breakdown">
+                {/* <div className="xp-breakdown">
                     <h3>How to Earn XP</h3>
                     <div className="xp-method">
                         <span className="method-icon">✅</span>
@@ -68,7 +68,7 @@ const XPPopup = ({ isOpen, onClose, currentXP, totalXP }) => {
                         <span className="method-name">Win Competitions</span>
                         <span className="method-xp">+200 XP</span>
                     </div>
-                </div>
+                </div> */}
 
                 <button className="popup-action-btn" onClick={onClose}>
                     Got it!
