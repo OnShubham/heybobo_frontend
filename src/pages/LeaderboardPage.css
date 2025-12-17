@@ -1,0 +1,223 @@
+.leaderboard-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    padding: 20px;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.leaderboard-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.leaderboard-header h2 {
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+}
+
+.leaderboard-header p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    margin: 0;
+}
+
+.podium {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding: 0 20px;
+}
+
+.podium-item {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px 16px 0 0;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.podium-item:hover {
+    transform: translateY(-8px);
+}
+
+.podium-item.first {
+    height: 200px;
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    order: 2;
+    flex: 1;
+    max-width: 160px;
+}
+
+.podium-item.second {
+    height: 160px;
+    background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 100%);
+    order: 1;
+    flex: 1;
+    max-width: 140px;
+}
+
+.podium-item.third {
+    height: 140px;
+    background: linear-gradient(135deg, #cd7f32 0%, #e5a66f 100%);
+    order: 3;
+    flex: 1;
+    max-width: 140px;
+}
+
+.podium-avatar {
+    font-size: 48px;
+    margin-bottom: 8px;
+}
+
+.podium-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 4px;
+}
+
+.podium-xp {
+    font-size: 12px;
+    color: #718096;
+    font-weight: 600;
+}
+
+.podium-rank {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 32px;
+    background: #2d3748;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.leaderboard-list {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.leaderboard-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.leaderboard-row:hover {
+    transform: translateX(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.leaderboard-row.current-user {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.player-rank {
+    font-size: 18px;
+    font-weight: 700;
+    color: #718096;
+    min-width: 40px;
+}
+
+.leaderboard-row.current-user .player-rank {
+    color: white;
+}
+
+.player-avatar {
+    font-size: 32px;
+}
+
+.player-info {
+    flex: 1;
+}
+
+.player-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 2px;
+}
+
+.leaderboard-row.current-user .player-name {
+    color: white;
+}
+
+.player-xp {
+    font-size: 14px;
+    color: #718096;
+    font-weight: 500;
+}
+
+.leaderboard-row.current-user .player-xp {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.current-badge {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+}
+
+.leaderboard-footer {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.leaderboard-footer p {
+    margin: 0;
+    color: #4a5568;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .podium {
+        padding: 0;
+    }
+
+    .podium-item.first {
+        max-width: 120px;
+    }
+
+    .podium-item.second,
+    .podium-item.third {
+        max-width: 100px;
+    }
+
+    .podium-avatar {
+        font-size: 36px;
+    }
+
+    .podium-name {
+        font-size: 12px;
+    }
+}
