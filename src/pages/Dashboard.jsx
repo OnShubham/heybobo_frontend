@@ -73,6 +73,7 @@ const Dashboard = () => {
                 onClose={() => setIsXPPopupOpen(false)}
                 currentXP={userData.profile.currentXP}
                 totalXP={userData.profile.totalXP}
+                userLevel={userData.profile.level}
             />
 
             {/* Main Content */}

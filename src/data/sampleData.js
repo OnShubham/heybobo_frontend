@@ -178,6 +178,129 @@ export const actionHandlers = {
     }
 };
 
+// XP Tasks Data - Industry-level dynamic task system
+export const xpTasks = [
+    {
+        id: 1,
+        title: 'Complete your daily workout',
+        xpReward: 10,
+        icon: '💪',
+        category: 'fitness',
+        completed: false
+    },
+    {
+        id: 2,
+        title: 'Log your meals for the day',
+        xpReward: 10,
+        icon: '🍽️',
+        category: 'dietary',
+        completed: false
+    },
+    {
+        id: 3,
+        title: 'Drink 8 glasses of water',
+        xpReward: 10,
+        icon: '💧',
+        category: 'health',
+        completed: false
+    },
+    {
+        id: 4,
+        title: 'Complete a meditation session',
+        xpReward: 10,
+        icon: '🧘',
+        category: 'health',
+        completed: false
+    },
+    {
+        id: 5,
+        title: 'Read for 30 minutes',
+        xpReward: 10,
+        icon: '📚',
+        category: 'education',
+        completed: false
+    }
+];
+
+// Function to generate dynamic tasks based on user level and category
+export const generateDynamicTasks = (userLevel = 1, categories = ['all']) => {
+    const taskTemplates = {
+        fitness: [
+            { title: 'Complete your daily workout', xpReward: 10, icon: '💪' },
+            { title: 'Do 50 push-ups', xpReward: 15, icon: '🏋️' },
+            { title: 'Run 5 kilometers', xpReward: 20, icon: '🏃' },
+            { title: 'Complete a yoga session', xpReward: 15, icon: '🧘' },
+            { title: 'Attend a fitness class', xpReward: 25, icon: '🎯' }
+        ],
+        dietary: [
+            { title: 'Log your meals for the day', xpReward: 10, icon: '🍽️' },
+            { title: 'Eat 5 servings of vegetables', xpReward: 15, icon: '🥗' },
+            { title: 'Avoid processed foods', xpReward: 20, icon: '🚫' },
+            { title: 'Track your calorie intake', xpReward: 10, icon: '📊' },
+            { title: 'Prepare a healthy meal', xpReward: 15, icon: '👨‍🍳' }
+        ],
+        health: [
+            { title: 'Drink 8 glasses of water', xpReward: 10, icon: '💧' },
+            { title: 'Get 8 hours of sleep', xpReward: 15, icon: '😴' },
+            { title: 'Take your vitamins', xpReward: 10, icon: '💊' },
+            { title: 'Complete a health check-up', xpReward: 30, icon: '🏥' },
+            { title: 'Practice deep breathing', xpReward: 10, icon: '🌬️' }
+        ],
+        education: [
+            { title: 'Read for 30 minutes', xpReward: 10, icon: '📚' },
+            { title: 'Complete an online course module', xpReward: 25, icon: '🎓' },
+            { title: 'Watch an educational video', xpReward: 10, icon: '📺' },
+            { title: 'Practice a new skill', xpReward: 20, icon: '🎨' },
+            { title: 'Write in your journal', xpReward: 10, icon: '📝' }
+        ],
+        grooming: [
+            { title: 'Complete your skincare routine', xpReward: 10, icon: '🧴' },
+            { title: 'Get a haircut', xpReward: 15, icon: '💇' },
+            { title: 'Trim your nails', xpReward: 5, icon: '💅' },
+            { title: 'Take a relaxing bath', xpReward: 10, icon: '🛁' },
+            { title: 'Apply sunscreen', xpReward: 10, icon: '☀️' }
+        ]
+    };
+
+    let selectedTasks = [];
+    const taskCount = Math.min(5 + Math.floor(userLevel / 5), 10); // More tasks as level increases
+
+    // Filter categories
+    const activeCategories = categories.includes('all')
+        ? Object.keys(taskTemplates)
+        : categories.filter(cat => taskTemplates[cat]);
+
+    // Generate tasks from selected categories
+    activeCategories.forEach(category => {
+        const categoryTasks = taskTemplates[category];
+        const tasksToAdd = Math.ceil(taskCount / activeCategories.length);
+
+        for (let i = 0; i < Math.min(tasksToAdd, categoryTasks.length); i++) {
+            const task = categoryTasks[i];
+            selectedTasks.push({
+                id: selectedTasks.length + 1,
+                ...task,
+                category,
+                completed: false,
+                // Scale XP reward based on user level
+                xpReward: Math.floor(task.xpReward * (1 + userLevel * 0.1))
+            });
+        }
+    });
+
+    return selectedTasks.slice(0, taskCount);
+};
+
+// XP Task Categories for filtering
+export const xpTaskCategories = [
+    { id: 'all', name: 'All Tasks', icon: '📋' },
+    { id: 'fitness', name: 'Fitness', icon: '💪' },
+    { id: 'dietary', name: 'Dietary', icon: '🍽️' },
+    { id: 'health', name: 'Health', icon: '💧' },
+    { id: 'education', name: 'Education', icon: '📚' },
+    { id: 'grooming', name: 'Grooming', icon: '🧴' }
+];
+
 // Export userData with default level 5
 export const userData = createUserData(5);
 
