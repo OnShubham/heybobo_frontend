@@ -30,13 +30,13 @@ const ProfileHeader = ({
                 <h2 className="user-name">{userName}</h2>
 
                 {/* XP Progress */}
-                <div className="xp-container">
+                {/* <div className="xp-container">
                     <ProgressBar
                         current={currentXP}
                         total={totalXP}
                         label={`${currentXP} / ${totalXP} XP`}
                     />
-                </div>
+                </div> */}
             </div>
         </div>
     </>

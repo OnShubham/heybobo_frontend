@@ -43,7 +43,9 @@ function App() {
       />
 
       {/* Stats Cards */}
-      <StatsCards stats={userData.stats} />
+      <StatsCards stats={userData.stats}
+        currentXP={userData.profile.currentXP}
+        totalXP={userData.profile.totalXP} />
 
       {/* Main Content */}
       <div className="main-content">

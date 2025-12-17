@@ -1,9 +1,18 @@
 import React from 'react';
 import './StatsCards.css';
+import ProgressBar from '../ProgressBar/ProgressBar';
 
-const StatsCards = ({ stats }) => {
-    return (
+
+const StatsCards = ({ stats, currentXP, totalXP }) => {
+    return (<>  <div className="xp-container">
+        <ProgressBar
+            current={currentXP}
+            total={totalXP}
+            label={`${currentXP} / ${totalXP} XP`}
+        />
+    </div>
         <div className="stats-cards-container">
+
             {stats.map((stat, index) => (
                 <div key={index} className="stat-card">
                     <div className="stat-icon">{stat.icon}</div>
@@ -12,7 +21,7 @@ const StatsCards = ({ stats }) => {
                 </div>
             ))}
         </div>
-    );
+    </>);
 };
 
 export default StatsCards;
