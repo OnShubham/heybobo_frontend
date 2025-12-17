@@ -1,5 +1,6 @@
 import React from 'react';
 import './ProfileHeader.css';
+import ProgressBar from '../ProgressBar/ProgressBar';
 
 const ProfileHeader = ({
     backgroundImage,
@@ -9,7 +10,7 @@ const ProfileHeader = ({
     currentXP,
     totalXP
 }) => {
-    const xpPercentage = (currentXP / totalXP) * 100;
+
 
     return (<>
         <div
@@ -30,15 +31,11 @@ const ProfileHeader = ({
 
                 {/* XP Progress */}
                 <div className="xp-container">
-                    <div className="xp-bar-wrapper">
-                        <div
-                            className="xp-bar-fill"
-                            style={{ width: `${xpPercentage}%` }}
-                        />
-                    </div>
-                    <p className="xp-text">
-                        {currentXP} / {totalXP} XP
-                    </p>
+                    <ProgressBar
+                        current={currentXP}
+                        total={totalXP}
+                        label={`${currentXP} / ${totalXP} XP`}
+                    />
                 </div>
             </div>
         </div>
