@@ -8,7 +8,7 @@ const StatsCards = ({ stats, currentXP, totalXP }) => {
         <ProgressBar
             current={currentXP}
             total={totalXP}
-            label={`${currentXP} / ${totalXP} XP`}
+        // label={`${currentXP} / ${totalXP} XP`}
         />
     </div>
         <div className="stats-cards-container">

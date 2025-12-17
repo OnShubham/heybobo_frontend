@@ -6,13 +6,15 @@ const ProgressBar = ({ current, total, label, className = '' }) => {
 
     return (
         <div className={`progress-container ${className}`}>
+            <div className="progress-text">
+                <span className="current-xp">{current}</span> / {total} XP
+            </div>
             <div className="progress-bar-wrapper">
                 <div
                     className="progress-bar-fill"
                     style={{ width: `${percentage}%` }}
                 />
             </div>
-            {label && <p className="progress-text">{label}</p>}
         </div>
     );
 };

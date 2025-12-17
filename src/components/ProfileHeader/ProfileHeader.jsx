@@ -1,6 +1,6 @@
 import React from 'react';
 import './ProfileHeader.css';
-import ProgressBar from '../ProgressBar/ProgressBar';
+// import ProgressBar from '../ProgressBar/ProgressBar';
 
 const ProfileHeader = ({
     backgroundImage,
