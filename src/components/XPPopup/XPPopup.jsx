@@ -1,28 +1,82 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './XPPopup.css';
-import { xpTasks, generateDynamicTasks } from '../../data/sampleData';
 
-const XPPopup = ({ isOpen, onClose, currentXP, totalXP, userLevel = 5 }) => {
-    // Use dynamic tasks based on user level, or fallback to static tasks
-    const [tasks, setTasks] = useState(
-        userLevel ? generateDynamicTasks(userLevel, ['all']) : xpTasks
-    );
+const XPPopup = ({ isOpen, onClose, userId }) => {
+    const [questData, setQuestData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [completedTasks, setCompletedTasks] = useState([]);
+
+    useEffect(() => {
+        if (isOpen && userId) {
+            fetchQuestData();
+        }
+    }, [isOpen, userId]);
+
+    const fetchQuestData = async () => {
+        setLoading(true);
+        setError(null);
+        try {
+            const response = await fetch(`http://127.0.0.1:8000/quests/${userId}/status`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch quest data');
+            }
+            const data = await response.json();
+            setQuestData(data);
+            // Initialize completed tasks based on progress
+            const completed = new Array(data.quest_details.tasks.length).fill(false);
+            for (let i = 0; i < data.progress.completed; i++) {
+                completed[i] = true;
+            }
+            setCompletedTasks(completed);
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleTaskComplete = (taskIndex) => {
+        const newCompletedTasks = [...completedTasks];
+        newCompletedTasks[taskIndex] = !newCompletedTasks[taskIndex];
+        setCompletedTasks(newCompletedTasks);
+    };
 
     if (!isOpen) return null;
 
-    const handleTaskComplete = (taskId) => {
-        setTasks(prevTasks =>
-            prevTasks.map(task =>
-                task.id === taskId ? { ...task, completed: !task.completed } : task
-            )
+    if (loading) {
+        return (
+            <div className="popup-overlay" onClick={onClose}>
+                <div className="popup-content xp-task-popup" onClick={(e) => e.stopPropagation()}>
+                    <button className="popup-close" onClick={onClose}>×</button>
+                    <div className="popup-loading">
+                        <div className="loading-spinner"></div>
+                        <p>Loading tasks...</p>
+                    </div>
+                </div>
+            </div>
         );
-    };
+    }
 
-    const completedTasksCount = tasks.filter(task => task.completed).length;
-    const totalXPEarnable = tasks.reduce((sum, task) => sum + task.xpReward, 0);
-    const earnedXP = tasks
-        .filter(task => task.completed)
-        .reduce((sum, task) => sum + task.xpReward, 0);
+    if (error) {
+        return (
+            <div className="popup-overlay" onClick={onClose}>
+                <div className="popup-content xp-task-popup" onClick={(e) => e.stopPropagation()}>
+                    <button className="popup-close" onClick={onClose}>×</button>
+                    <div className="popup-error">
+                        <p>Error: {error}</p>
+                        <button onClick={fetchQuestData} className="retry-button">Retry</button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    if (!questData) return null;
+
+    const { quest_details } = questData;
+    const tasks = quest_details.tasks;
+    const completedCount = completedTasks.filter(Boolean).length;
 
     return (
         <div className="popup-overlay" onClick={onClose}>
@@ -37,22 +91,23 @@ const XPPopup = ({ isOpen, onClose, currentXP, totalXP, userLevel = 5 }) => {
                 </div>
 
                 <div className="task-list">
-                    {tasks.map((task) => (
+                    {tasks.map((task, index) => (
                         <div
-                            key={task.id}
-                            className={`task-item ${task.completed ? 'completed' : ''}`}
-                            onClick={() => handleTaskComplete(task.id)}
+                            key={index}
+                            className={`task-item ${completedTasks[index] ? 'completed' : ''}`}
+                            onClick={() => handleTaskComplete(index)}
                         >
                             <div className="task-content">
-                                <span className="task-icon">{task.icon}</span>
-                                <span className="task-title">{task.title}</span>
+                                <span className="task-title">{task.name}</span>
                             </div>
                             <div className="task-reward">
                                 <div className="xp-badge">
-                                    <svg className="xp-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor" />
-                                    </svg>
-                                    <span className="xp-amount">x{task.xpReward}</span>
+                                    <img
+                                        src="/assets/images/xp.png"
+                                        alt="XP"
+                                        className="xp-icon-img"
+                                    />
+                                    <span className="xp-amount">x10</span>
                                 </div>
                             </div>
                         </div>
@@ -62,10 +117,7 @@ const XPPopup = ({ isOpen, onClose, currentXP, totalXP, userLevel = 5 }) => {
                 <div className="popup-footer">
                     <div className="progress-info">
                         <span className="progress-text">
-                            {completedTasksCount} of {tasks.length} tasks completed
-                        </span>
-                        <span className="xp-earned">
-                            {earnedXP} / {totalXPEarnable} XP
+                            {completedCount} of {tasks.length} tasks completed
                         </span>
                     </div>
                 </div>

@@ -71,9 +71,7 @@ const Dashboard = () => {
             <XPPopup
                 isOpen={isXPPopupOpen}
                 onClose={() => setIsXPPopupOpen(false)}
-                currentXP={userData.profile.currentXP}
-                totalXP={userData.profile.totalXP}
-                userLevel={userData.profile.level}
+                userId="999" // Replace with actual user ID from authentication
             />
 
             {/* Main Content */}
