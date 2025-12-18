@@ -71,7 +71,6 @@ const Dashboard = () => {
             <XPPopup
                 isOpen={isXPPopupOpen}
                 onClose={() => setIsXPPopupOpen(false)}
-                userId="999" // Replace with actual user ID from authentication
             />
 
             {/* Main Content */}
