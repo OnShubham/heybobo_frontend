@@ -601,10 +601,10 @@
     box-shadow: 0 4px 12px rgba(244, 196, 48, 0.4);
 }
 
-.claim-button:hover {
+/* .claim-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(244, 196, 48, 0.5);
-}
+} */
 
 /* Responsive Updates */
 @media (max-width: 768px) {
